@@ -1,0 +1,33 @@
+@page "/count"
+
+<h1>Налог</h1>
+
+<table class = "table">
+    <tr>
+        <th> Сумма </th>
+        <th><input @bind = "Principal" /></th>
+    </tr>
+    <tr>
+        <th>НДС</th>
+        <th><input @bind = "Nds" />%</th>
+    </tr>
+    <tr>
+        <th>Всего:</th>
+        <th>@Total</th>
+    </tr>
+</table>
+<button class="btn btn-primary" @onclick= "Calculate">Расчитать</button>
+<img class = "" img src = "https://www.destructoid.com/ul/578873-dark-souls-ii-looks-better-than-ever-with-this-lighting-mod/Dark-Souls-II-Majula-lighting-mod-noscale.jpg" width = "800" hight = "600">
+@code 
+{
+    private double Principal { get; set; } = 5000;
+    private double InterestRate { get; set; } = 5;
+    private double Nds { get; set; } = 0;
+    private double total { get; set; } = 0;
+    private string Total { get; set; }
+    private void Calculate()
+{
+    var total = Principal/100 * Nds + Principal;
+    Total = total.ToString("C");
+}
+}
